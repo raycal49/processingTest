@@ -1,0 +1,49 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#loginPageBody {
+  flex: 1;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+}
+
+#userinfo {
+  display:flex;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  margin: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+ .inputGroup {
+  margin:5px;
+}
+
+header {
+  padding: 12px 16px;
+}
+
+footer {
+  text-align: center;
+  padding: 12px;
+}
+
+/* footer {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+} */

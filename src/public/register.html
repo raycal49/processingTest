@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name= "author" content = "Raymond Calderon">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/js/register.js" defer></script>
+    <title>Phone Co</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html"> Home </a>
+        </nav>
+    </header>
+
+    <main id="loginPageBody">
+        <form id="userinfo" action="/auth/login"  method="POST" >
+            <h1> Make a new account </h1>
+
+            <div class="inputGroup">
+                <label for="username"> Username: </label>
+                <input type="text" name="user-name" placeholder="Enter your username" minlength="4" maxlength="12" required /> 
+                <span id="username-error" hidden style="color:red"> Invalid username</span>
+            </div>
+
+            <div class="inputGroup">
+                <label for="email"> Email: </label>
+                <input type="email" placeholder="you@company.com" required/>
+                <span id="email-error" hidden style="color:red"> Invalid email</span>
+            </div>
+
+            <div class="inputGroup">
+                <label for="password" > Password: </label>
+                <input type="password" name="password" placeholder="Enter your password"  minlength="5" maxlength="12" required/>
+                <span id="password-error" hidden style="color:red"> Invalid email</span>
+            </div>
+
+            <p> Already have an account?
+                <a href="/login.html">Login here</a>
+            </p>
+
+            <div class="inputGroup">
+                <label for="submit"> </label>
+
+                <button id="submit_button" type="button"> Submit </button>
+            </div>
+
+        </form>
+    </main>
+
+    <footer>
+        <p >
+            <a href="about.html"> About us </a>
+        </p>
+    </footer>
+</body>
