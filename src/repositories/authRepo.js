@@ -3,11 +3,6 @@ export const createAuthRepository = (sql) => ({
     const rows = await sql`SELECT id, role, hash, FROM users WHERE username = ${name}`;
     return rows[0];
   },
-  insertUser: async (user) => {
-    const rows = await sql`INSERT INTO users (role, username, hash, email)
-                           VALUES (${user.role}, ${user.name}, ${user.hash}, ${user.email})`;
-    return rows[0];
-  },
   checkUserExists: async (newUser) => {
     const rows = await sql`SELECT EXISTS (SELECT 1 FROM users WHERE username = ${username})`;
 

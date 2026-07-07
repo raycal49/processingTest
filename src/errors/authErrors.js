@@ -15,9 +15,8 @@ export class AccountAlreadyExistsError extends Error {
 }
 
 export class ValidationError extends Error {
-  constructor(field, options) {
-    super(`The ${field} you entered is invalid`, options);
+  constructor(fields, options) {
+    super("A field or fields contain invalid input", options);
     this.name = "ValidationError";
-    this.statusCode = 400; //400 bad request
   }
 }
