@@ -27,7 +27,7 @@ async function registerUser() {
         const responseBody = await response.json();
 
         console.log("The result of the server-side validation is: " + JSON.stringify(responseBody, null, 2));
-        console.log("The result of the server-side validation is: " + JSON.stringify(responseBody.errors.password, null, 2));
+        // console.log("The result of the server-side validation is: " + JSON.stringify(responseBody.errors.password, null, 2));
         console.log("Has the server-side validation failed? The answer is: " + (responseBody.status === "fail"));
 
         if (responseBody.status === "fail") {

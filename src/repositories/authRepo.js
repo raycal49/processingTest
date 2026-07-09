@@ -8,10 +8,9 @@ export const createAuthRepository = (sql) => ({
   checkUserExists: async (name) => {
     const rows = await sql`SELECT EXISTS (
     SELECT 1 FROM users WHERE username = ${name}
-    )
-    AS userExists`;
+    )`;
 
-    return rows[0].userExists;
+    return rows[0].exists;
   },
   insertUser: async (role, username, hash, email) => {
     try {
@@ -20,10 +19,17 @@ export const createAuthRepository = (sql) => ({
         VALUES (${role}, ${username}, ${hash}, ${email})
         RETURNING id, role
         `
+        
+      // console.log("insertUser rows:", rows)
+      // console.log("insertUser rows[0]:", rows[0])
+
 
         return rows[0];
     } catch (err) {
-      console.log("error's code is: " + err.code);
+      // console.log("error's code is", err.code)
+      // console.log("constraint:", err.constraint)
+      // console.log("detail:", err.detail)
+
       if (err.code === '23505')
         throw new ExistingAccountError("Account with this username already exists");
       else

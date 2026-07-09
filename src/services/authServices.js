@@ -21,19 +21,19 @@ const createClaims = (id, role) => {
   return {"id":id, "role":role};
 }
 
-const createToken = (claims) => {
+const createToken = async (claims) => {
   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-    new SignJWT(claims)
+    return await new SignJWT(claims)
       .setProtectedHeader({ alg: 'HS256' })
       .setIssuedAt()
       .setExpirationTime('1h')
       .sign(secret)
 };
 
-const issueToken = (id, role) => {
+const issueToken = async (id, role) => {
   const claims = createClaims(id, role);
 
-  const token = createToken(claims);
+  const token = await createToken(claims);
 
   return token;
 }
@@ -54,7 +54,7 @@ export const createAuthServices = (authRepository) => ({
           throw new InvalidCredentialError();
         }
         
-        const signedToken = issueToken(id,role);
+        const signedToken = await issueToken(id,role);
 
         return signedToken;
     },
@@ -65,7 +65,7 @@ export const createAuthServices = (authRepository) => ({
           throw new ExistingAccountError();
         }
         
-        const hash = hashPassword(user.password);
+        const hash = await hashPassword(user.password);
 
         const {id, role} = await authRepository.insertUser(
           "Customer",
@@ -74,7 +74,7 @@ export const createAuthServices = (authRepository) => ({
           user.email
         );
 
-        const signedToken = issueToken(id,role);
+        const signedToken = await issueToken(id,role);
 
         return signedToken;
     },    

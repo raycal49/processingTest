@@ -12,12 +12,12 @@ export const createAuthController = (authServices) => ({
     registerUser: async (req, res) => {
       const user = req.body;
 
-      authServices.addUser(user); // will throw an error if the SQL insertion fails but... should we... error check token? no because the express 5 error-handling middleware will take care of it! i think
+      const token = await authServices.addUser(user); // will throw an error if the SQL insertion fails but... should we... error check token? no because the express 5 error-handling middleware will take care of it! i think
 
       console.log("In registration, token is " + token);
 
       res.cookie("token", token, cookieOptions);
       
-      return res.status(201).json({ message: `${created.username}, your account was successfully created!`});
+      return res.status(201).json({ message: `${user.username}, your account was successfully created!`});
     }
 })
