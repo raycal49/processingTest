@@ -24,7 +24,7 @@ export const registerSchema = z
       .string({ required_error: 'Username is required' })
       .trim()
       .min(5, 'Username must be at least 5 characters')
-      .max(12, 'Username must be at most 12 characters')
+      .max(15, 'Username must be at most 15 characters')
       .regex(
         /^[a-zA-Z0-9]+$/,
         'Username may only contain letters and numbers'
@@ -35,7 +35,7 @@ export const registerSchema = z
       .trim()
       .toLowerCase()
       .email('Invalid email address')
-      .max(18, 'Email is too long'),
+      .max(30, 'Email is too long'),
 
     password: z
       .string({ required_error: 'Password is required' })
