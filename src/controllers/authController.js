@@ -18,6 +18,6 @@ export const createAuthController = (authServices) => ({
 
       res.cookie("token", token, cookieOptions);
       
-      return res.status(200).json({ message: `${created.username}, your account was successfully created!`});
+      return res.status(201).json({ message: `${created.username}, your account was successfully created!`});
     }
 })

@@ -22,21 +22,25 @@
 
             <div class="inputGroup">
                 <label for="username"> Username: </label>
-                <input type="text" name="username" placeholder="Enter your username" minlength="4" maxlength="12" required /> 
-                <span id="username-error" hidden style="color:red"> Invalid username</span>
+                <input type="text" name="username" placeholder="Enter your username" minlength="5" maxlength="12" required /> 
             </div>
+
+            <span class=invisible id="username-error" style="color:red"> Username must contain between five to twelve characters and may only contain alphanumeric characters</span>
 
             <div class="inputGroup">
                 <label for="email"> Email: </label>
                 <input type="email" name="email" placeholder="you@company.com" required/>
-                <span id="email-error" hidden style="color:red"> Invalid email</span>
             </div>
+
+            <span class=invisible id="email-error" style="color:red"> Invalid email</span>
 
             <div class="inputGroup">
                 <label for="password" > Password: </label>
                 <input type="password" name="password" placeholder="Enter your password"  minlength="5" maxlength="12" required/>
-                <span id="password-error" hidden style="color:red"> Invalid password</span>
+                <!-- <span id="password-error" hidden style="color:red"> Your password needs at least 8 characters, one uppercase letter, and one number.</span> -->
             </div>
+
+            <span class=invisible id="password-error" style="color:red"> <small> Passwords must be at least 8 characters long, with an one uppercase letter, and a number. </small></span>
 
             <p> Already have an account?
                 <a href="/login.html">Login here</a>
@@ -44,7 +48,7 @@
 
             <div class="inputGroup">
                 <label for="submit-button"> </label>
-                <button id="submit-button" type="submit"> Submit </button>
+                <button id="submit-button" type="submit"> Register </button>
             </div>
 
         </form>

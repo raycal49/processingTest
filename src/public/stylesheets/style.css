@@ -16,6 +16,7 @@ a {
   flex-direction: column;
   align-items:center;
   justify-content: center;
+    width: 100%;
 }
 
 #userinfo {
@@ -27,10 +28,23 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items:center;
+  width: 20%;
 }
 
  .inputGroup {
   margin:5px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; */
+}
+
+.invisible {
+  visibility:hidden;
+}
+
+#password-error {
+  padding: 10px;
 }
 
 header {

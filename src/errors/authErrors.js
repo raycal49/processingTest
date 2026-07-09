@@ -6,7 +6,7 @@ export class InvalidCredentialError extends Error {
   }
 }
 
-export class AccountAlreadyExistsError extends Error {
+export class ExistingAccountError extends Error {
   constructor(options) {
     super("Account with this username already exists", options);        // sets message + handles cause
     this.name = "UsernameTaken";  // otherwise it lies and says "Error"

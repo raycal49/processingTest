@@ -23,11 +23,11 @@ export const registerSchema = z
     username: z
       .string({ required_error: 'Username is required' })
       .trim()
-      .min(3, 'Username must be at least 3 characters')
-      .max(30, 'Username must be at most 30 characters')
+      .min(5, 'Username must be at least 5 characters')
+      .max(12, 'Username must be at most 12 characters')
       .regex(
-        /^[a-zA-Z0-9_]+$/,
-        'Username may only contain letters, numbers, and underscores'
+        /^[a-zA-Z0-9]+$/,
+        'Username may only contain letters and numbers'
       ),
 
     email: z

@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 import { SignJWT, jwtVerify } from 'jose';
-import { InvalidCredentialError} from '../errors/authErrors.js'
+import { InvalidCredentialError, ExistingAccountError } from '../errors/authErrors.js'
 
 const ARGON2_OPTIONS = {
   type: argon2.argon2id,
@@ -59,10 +59,10 @@ export const createAuthServices = (authRepository) => ({
         return signedToken;
     },
     addUser: async (user) => {
-        const existingUser = await authRepository.checkUserExists(user) ?? null;
+        const existingUser = await authRepository.checkUserExists(user.username);
 
         if (existingUser) {
-          throw new AccountAlreadyExistsError();
+          throw new ExistingAccountError();
         }
         
         const hash = hashPassword(user.password);
