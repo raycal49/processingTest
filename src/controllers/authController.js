@@ -1,4 +1,4 @@
-import { cookieOptions } from '../config/cookies.js';
+import { cookieOptions, clearCookieOptions } from '../config/cookies.js';
 
 export const createAuthController = (authServices) => ({
     loginUser: async (req, res) => {
@@ -19,5 +19,10 @@ export const createAuthController = (authServices) => ({
       res.cookie("token", token, cookieOptions);
       
       return res.status(201).json({ message: `${user.username}, your account was successfully created!`});
+    },
+    logoutUser: async (req, res) => {
+      res.clearCookie("token", clearCookieOptions); // no service call needed — the JWT is stateless, so logout is just dropping the cookie
+
+      return res.status(200).json({ message: 'Logged out' });
     }
 })
