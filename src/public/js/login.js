@@ -38,6 +38,8 @@ async function sendData() {
         console.error(e);
     }
 
+    window.location.href = '/dashboard.html'
+
 }
 
 form.addEventListener("submit", async (event) => {
