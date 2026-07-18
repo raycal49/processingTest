@@ -2,7 +2,7 @@ import { ExistingAccountError } from '../errors/authErrors.js';
 
 export const createAuthRepository = (sql) => ({
   findUserCredentials: async (name) => {
-    const rows = await sql`SELECT user_id, hash, FROM users WHERE username = ${name}`;
+    const rows = await sql`SELECT user_id, hash FROM users WHERE username = ${name}`;
     return rows[0];
   },
   checkUserExists: async (name) => {

@@ -46,7 +46,7 @@ export const createAuthServices = (authRepository) => ({
             throw new InvalidCredentialError();
         }
 
-        const { id, hash } = userCredentials;
+        const { user_id, hash } = userCredentials;
 
         const queryResult = await verifyPassword(password, hash);
 
@@ -67,7 +67,7 @@ export const createAuthServices = (authRepository) => ({
         
         const hash = await hashPassword(user.password);
 
-        const {id} = await authRepository.insertUser(
+        const {user_id} = await authRepository.insertUser(
           user.username,
           hash,
           user.email
