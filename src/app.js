@@ -25,7 +25,7 @@ const sql = createDb();
 const authRepo = createAuthRepository(sql);
 const authServices = createAuthServices(authRepo);
 const authController = createAuthController(authServices);
-// const authMiddleware = createAuthMiddleware;
+const authMiddleware = createAuthMiddleware();
 const authRoutes = createAuthRoutes(authController);
 
 const __dirname = import.meta.dirname;
@@ -39,14 +39,25 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/users', userRoutes);
-// app.use('/auth', authMiddleware, authRoutes);
 app.use('/auth', authRoutes);
 
+// dashboard.html lives in views/ (outside the static mapping) so the only way
+// to reach it is this route, which runs auth first
+app.get('/dashboard', authMiddleware, (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'dashboard.html'));
+});
+
 app.use((err, req, res, next) => {
+  // a browser NAVIGATING to a protected page should land on login, not see JSON.
+  // fetch sends Accept: */* which resolves to 'json' here; a real page
+  // navigation sends Accept: text/html and resolves to 'html'
+  if (err.statusCode === 401 && req.accepts(['json', 'html']) === 'html')
+    return res.redirect('/login.html');
+
   if (err.statusCode && err.message)
     return res.status(err.statusCode).json(err.message);
 
-  console.log("error aparently says: " + err);
+  console.error(err);
 
   return res.status(500).json({ error: 'Internal server error' });
 });
