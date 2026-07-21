@@ -33,6 +33,8 @@ async function logoutUser() {
 
 // the dashboard never assumes how you got here -- it asks the server what is
 // true right now and renders exactly one of its two states
+// dashboard has two hidden segments--the "my plan" section and the "plan picker" section
+// it unhides whichever section based off whether or not you have a plan or not
 async function loadDashboard() {
     try {
         const [subResponse, plansResponse] = await Promise.all([
@@ -40,11 +42,14 @@ async function loadDashboard() {
             fetch("/plans"),
         ]);
 
+        // if we have an auth error, redirect to login.html
         if (subResponse.status === 401) {
             window.location.href = "/login.html";
             return;
         }
 
+        // if we, for whatever reason, just don't get any HTTP success codes, then just show generic error and
+        // stop loading the dashboard
         if (!subResponse.ok || !plansResponse.ok) {
             showFormError("Could not load your dashboard. Please refresh.");
             return;
@@ -53,11 +58,14 @@ async function loadDashboard() {
         const { subscription } = await subResponse.json();
         const { plans } = await plansResponse.json();
 
+        // subscription response is supposed to hold the user's subscription
+        // if it doesn't, then we reveal pick plan prompt and return from the function here 
         if (!subscription) {
             pickPlanPrompt.classList.remove("hidden");
             return;
         }
 
+        // from here on out, we know the user has a subscription and the subscription variable stores the plan id
         // /subscriptions/me only knows the plan_id; the display details
         // (name, price) come from matching it against the /plans list
         const plan = plans.find((p) => p.plan_id === subscription.plan_id);
