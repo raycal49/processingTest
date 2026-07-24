@@ -28,42 +28,37 @@
         </nav>
     </header>
 
-    <main>
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <form id="userinfo" action="/auth/login" method="POST">
-                                <h1 class="h3 mb-1 text-center">Welcome</h1>
-                                <p class="subtitle text-muted text-center mb-4">Sign into your account.</p>
+    <!-- one centered card, so flex utilities do the centering (no grid needed) -->
+    <main class="container py-5 d-flex justify-content-center">
+        <div class="card shadow-sm form-card">
+            <div class="card-body">
+                <form id="userinfo" action="/auth/login" method="POST">
+                    <h1 class="h3 mb-1 text-center">Welcome</h1>
+                    <p class="subtitle text-muted text-center mb-4">Sign into your account.</p>
 
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username"
-                                           placeholder="Enter username" autocomplete="username" required />
-                                    <span class="invisible text-danger small" id="username-error" aria-live="polite">Username is required</span>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                           placeholder="Enter password" autocomplete="current-password" required />
-                                    <span class="invisible text-danger small" id="password-error" aria-live="polite">Password is required</span>
-                                </div>
-
-                                <!-- form-level errors (wrong credentials, server trouble) -- text is filled in by login.js -->
-                                <span class="invisible text-danger small d-block mb-2" id="form-error" aria-live="polite"></span>
-
-                                <p class="small">Don't have an account?
-                                    <a href="/register.html">Register here</a>
-                                </p>
-
-                                <button id="submit-button" type="submit" class="btn btn-primary w-100">Submit</button>
-                            </form>
-                        </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               placeholder="Enter username" autocomplete="username" required />
+                        <span class="invisible text-danger small" id="username-error" aria-live="polite">Username is required</span>
                     </div>
-                </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Enter password" autocomplete="current-password" required />
+                        <span class="invisible text-danger small" id="password-error" aria-live="polite">Password is required</span>
+                    </div>
+
+                    <!-- form-level errors (wrong credentials, server trouble) -- text is filled in by login.js -->
+                    <span class="invisible text-danger small d-block mb-2" id="form-error" aria-live="polite"></span>
+
+                    <p class="small">Don't have an account?
+                        <a href="/register.html">Register here</a>
+                    </p>
+
+                    <button id="submit-button" type="submit" class="btn btn-primary w-100">Submit</button>
+                </form>
             </div>
         </div>
     </main>

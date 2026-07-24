@@ -28,45 +28,40 @@
         </nav>
     </header>
 
-    <main>
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <form id="userinfo" action="/auth/register" method="POST">
-                                <h1 class="h3 mb-4 text-center">Make a new account</h1>
+    <!-- one centered card, so flex utilities do the centering (no grid needed) -->
+    <main class="container py-5 d-flex justify-content-center">
+        <div class="card shadow-sm form-card">
+            <div class="card-body">
+                <form id="userinfo" action="/auth/register" method="POST">
+                    <h1 class="h3 mb-4 text-center">Make a new account</h1>
 
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username"
-                                           placeholder="Enter your username" minlength="5" maxlength="15" required />
-                                    <span class="invisible text-danger small" id="username-error">Username must contain between five to twelve characters and may only contain alphanumeric characters</span>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email"
-                                           placeholder="you@company.com" required />
-                                    <span class="invisible text-danger small" id="email-error">Invalid email</span>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                           placeholder="Enter your password" minlength="5" maxlength="12" required />
-                                    <span class="invisible text-danger small" id="password-error">Passwords must be at least 8 characters long, with an one uppercase letter, and a number.</span>
-                                </div>
-
-                                <p class="small">Already have an account?
-                                    <a href="/login.html">Login here</a>
-                                </p>
-
-                                <button id="submit-button" type="submit" class="btn btn-primary w-100">Register</button>
-                            </form>
-                        </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               placeholder="Enter your username" minlength="5" maxlength="15" required />
+                        <span class="invisible text-danger small" id="username-error">Username must contain between five to twelve characters and may only contain alphanumeric characters</span>
                     </div>
-                </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                               placeholder="you@company.com" required />
+                        <span class="invisible text-danger small" id="email-error">Invalid email</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Enter your password" minlength="5" maxlength="12" required />
+                        <span class="invisible text-danger small" id="password-error">Passwords must be at least 8 characters long, with an one uppercase letter, and a number.</span>
+                    </div>
+
+                    <p class="small">Already have an account?
+                        <a href="/login.html">Login here</a>
+                    </p>
+
+                    <button id="submit-button" type="submit" class="btn btn-primary w-100">Register</button>
+                </form>
             </div>
         </div>
     </main>

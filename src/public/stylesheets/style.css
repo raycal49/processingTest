@@ -22,3 +22,11 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+/* the single-card auth pages (login/register) center one card with flex
+   utilities instead of the grid -- this just caps how wide that card gets,
+   which is the one thing the old col-* classes were doing for us. */
+.form-card {
+  width: 100%;
+  max-width: 24rem;
+}
