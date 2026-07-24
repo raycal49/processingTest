@@ -36,10 +36,8 @@
                 <p class="subtitle text-muted">Choose the plan that fits you.</p>
             </div>
 
-            <!-- plans.js fills this with one card per plan fetched from /plans -->
             <div id="planList" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center"></div>
 
-            <!-- hidden until a plan is chosen -->
             <div class="row justify-content-center mt-4">
                 <div class="col-md-6 col-lg-4">
                     <form id="paymentForm" class="card shadow-sm hidden">
@@ -53,7 +51,6 @@
                                 <span class="invisible text-danger small" id="card_number-error" aria-live="polite">Card number must be 13-19 digits</span>
                             </div>
 
-                            <!-- form-level errors (already subscribed, server trouble) -- text is filled in by plans.js -->
                             <span class="invisible text-danger small d-block mb-2" id="form-error" aria-live="polite"></span>
 
                             <button id="submit-button" type="submit" class="btn btn-primary w-100">Pay</button>

@@ -28,8 +28,7 @@
         </nav>
     </header>
 
-    <!-- one centered card, so flex utilities do the centering (no grid needed) -->
-    <main class="container py-5 d-flex justify-content-center">
+    <main class="container py-5 d-flex justify-content-center align-items-center">
         <div class="card shadow-sm form-card">
             <div class="card-body">
                 <form id="userinfo" action="/auth/register" method="POST">
@@ -54,6 +53,13 @@
                         <input type="password" class="form-control" id="password" name="password"
                                placeholder="Enter your password" minlength="5" maxlength="12" required />
                         <span class="invisible text-danger small" id="password-error">Passwords must be at least 8 characters long, with an one uppercase letter, and a number.</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">Confirm password</label>
+                        <input type="password" class="form-control" id="confirm_password"
+                            placeholder="Re-enter your password" required />
+                        <span class="invisible text-danger small" id="confirm_password-error">Passwords do not match</span>
                     </div>
 
                     <p class="small">Already have an account?
