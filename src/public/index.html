@@ -58,9 +58,17 @@
         <p class="lead text-body-secondary">
             Geocoding, routing and maps behind one key. Pick a plan, watch your usage, no surprises.
         </p>
-        <div class="mt-4">
+        <!-- the same data-auth switch the navbar uses: signed-out visitors get the
+             sign-up path, signed-in ones get the two places they'd actually go next.
+             Both blocks ship in the HTML and CSS hides one, so the right pair is on
+             screen from the first frame -->
+        <div class="mt-4" data-auth="out">
             <a href="/login.html" class="btn btn-primary btn-lg me-2">Login</a>
             <a href="/register.html" class="btn btn-outline-secondary btn-lg">Register</a>
+        </div>
+        <div class="mt-4" data-auth="in">
+            <a href="/dashboard" class="btn btn-primary btn-lg me-2">Go to dashboard</a>
+            <a href="/plans.html" class="btn btn-outline-secondary btn-lg">Browse plans</a>
         </div>
 
         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center mt-5 text-start">
